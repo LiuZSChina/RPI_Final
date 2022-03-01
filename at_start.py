@@ -61,13 +61,16 @@ while True:
     # Shell scripts for system monitoring from here : https://unix.stackexchange.com/questions/119126/command-to-display-memory-usage-disk-usage-and-cpu-load
     cmd = "hostname -I | cut -d\' \' -f1"
     IP = subprocess.check_output(cmd, shell = True ).decode(encoding = "utf-8")
-    
+
+    time_split = time.ctime().split(' ')
+    times = time_split[1] + '-' +time_split[3] + '-' +time_split[4]
+
     WELCOM = 'RPI booted'
     
     # Write two lines of text.
     draw.text((x, top),       WELCOM,  font=font, fill=255)
     draw.text((x, top+8),       "IP: " + str(IP),  font=font, fill=255)
-    draw.text((x, top+16),       "TIME: " + str(time.ctime()),  font=font, fill=255)
+    draw.text((x, top+16),       "TIME: " + str(times),  font=font, fill=255)
     # Display image.
     disp.image(image)
     disp.display()
